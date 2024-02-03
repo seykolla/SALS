@@ -3,22 +3,15 @@ import responses
 import random
 
 
-responses.add(
-            responses.POST,
-            "https://www.googleapis.com/geolocation/v1/geolocate",
-            body='{"location": {"lat": 51.0,"lng": -0.1},"accuracy": 1200.4}',
-            status=200,
-            content_type="application/json",
-        )
+
 
 client = googlemaps.Client(key= 'AIzaSyDZP67HsK_6GmGq3WaL4IIZOeHIbHgg-hk')
 
 location = client.geolocate()['location']
-print(location)
 map_data = client.reverse_geocode(location)
 
-distance_km = 2
-distance_m = distance_km *1000
+distance_mi = 1
+distance_m = distance_mi * 1.60934 *1000
 
 place = ['urgent care', 'veterinary services']
 
