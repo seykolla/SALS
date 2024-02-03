@@ -40,10 +40,5 @@ class LifeLink:
             return results
 
 
-instance = LifeLink(distance = 2, service = 'urgent care')
 
-results = instance.get_nearby_places()
-for i in results:
-    print(i)
-    print()
 
