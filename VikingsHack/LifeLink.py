@@ -1,16 +1,17 @@
 import googlemaps
 import responses
 import random
+import sys 
 
 class LifeLink:
-
     def __init__(self, distance, service):
-        with open('initialize.txt', 'r') as f:
-            self.distance = float(f.readline()[0:2]) * 1.60934 *1000
-            service = f.readline()
+        assert service == "urgent care" or service =="vet"
+        assert type(distance)== float or type(distance) == int
 
         self.client = googlemaps.Client(key= 'AIzaSyDZP67HsK_6GmGq3WaL4IIZOeHIbHgg-hk')
         self.location = self.client.geolocate()['location']
+        self.distance = distance * 1.60934 *1000
+
         if(service == 'vet'):
             self.service = 'veterinary services'
         else:
@@ -36,6 +37,8 @@ class LifeLink:
                 wait_time = random.randint(1, 180)
                 destination = i['geometry']['location']
                 distance = self.client.distance_matrix(origins = self.location, destinations = destination)['rows'][0]['elements'][0]['distance']['text']
+                print(f"name: {i['name']},address: {i['vicinity']}, 'distance': {distance}, 'wait_time: {wait_time}, open: {i['opening_hours']['open_now']} ")
+                print()
                 results.append({'name':i['name'], 'address': i['vicinity'], 'distance': {distance}, 'wait_time': wait_time, 'open': i['opening_hours']['open_now']})
             return results
 
@@ -45,5 +48,8 @@ class LifeLink:
 
 
 
+vals =sys.argv[1:]
 
+instance = LifeLink(float(vals[0]), vals[1])
+instance.get_nearby_places()
 
