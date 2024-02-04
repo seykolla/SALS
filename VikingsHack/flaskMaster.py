@@ -1,9 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from flask import Flask, render_template, request,jsonify
 from requests import request
 =======
 from flask import Flask, render_template, request, jsonify
 >>>>>>> ed8d18a788eeb88aecadf39d297d95a32616cd92
+=======
+from flask import Flask, render_template, request, jsonify
+=======
+from flask import Flask, render_template, request,jsonify
+from requests import request
+>>>>>>> 3512f91 (hsjdflksjdf)
+>>>>>>> 92d2a9554c532f5fb1afc772d69ffd14b09deac3
 import locateaddress as la
 import os
 
@@ -21,11 +29,14 @@ def home():
         "<hr>" + render_template('map.html')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @app.route('/process', methods=['POST'])
 def process():
     data = request.json['data']
     return jsonify({'result': data}) 
 =======
+=======
+>>>>>>> 92d2a9554c532f5fb1afc772d69ffd14b09deac3
 @app.route('/process-data', methods=['POST'])
 def process():
     data = request.json['data']
@@ -33,7 +44,16 @@ def process():
         f.write(data)
     print(data)
     return jsonify({'result': data})
+<<<<<<< HEAD
 >>>>>>> ed8d18a788eeb88aecadf39d297d95a32616cd92
+=======
+=======
+@app.route('/process', methods=['POST'])
+def process():
+    data = request.json['data']
+    return jsonify({'result': data}) 
+>>>>>>> 3512f91 (hsjdflksjdf)
+>>>>>>> 92d2a9554c532f5fb1afc772d69ffd14b09deac3
 
 if __name__ == '__main__':
     app.run(debug=True)

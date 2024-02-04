@@ -39,6 +39,7 @@ class LifeLink:
             return results
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 with open('instance.txt', 'r') as f:
     distance = float(f.readline(1))
@@ -47,6 +48,8 @@ with open('instance.txt', 'r') as f:
 
 instace = LifeLink(distance, service)
 =======
+=======
+>>>>>>> 92d2a9554c532f5fb1afc772d69ffd14b09deac3
 f = open('initialize.txt', 'r')
 instance = LifeLink(f.readline().rstrip()[0:2], 'vet')
 places = instance.get_nearby_places()
@@ -55,4 +58,16 @@ with open('location.txt', 'w') as f:
     f.write(str(list(places)) + "\n")
     f.write(str(list(marker)))
     f.close()
+<<<<<<< HEAD
 >>>>>>> ed8d18a788eeb88aecadf39d297d95a32616cd92
+=======
+=======
+
+with open('instance.txt', 'r') as f:
+    distance = float(f.readline(1))
+    service = f.readline(2)
+
+
+instace = LifeLink(distance, service)
+>>>>>>> 3512f91 (hsjdflksjdf)
+>>>>>>> 92d2a9554c532f5fb1afc772d69ffd14b09deac3

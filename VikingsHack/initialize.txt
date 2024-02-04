@@ -1,6 +1,14 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 2
 urgent care
 =======
 20 miles
 >>>>>>> ed8d18a788eeb88aecadf39d297d95a32616cd92
+=======
+20 miles
+=======
+2
+urgent care
+>>>>>>> 3512f91 (hsjdflksjdf)
+>>>>>>> 92d2a9554c532f5fb1afc772d69ffd14b09deac3
