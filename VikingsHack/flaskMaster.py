@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request,jsonify
 from requests import request
 import locateaddress as la
 import os
@@ -16,11 +16,11 @@ def home():
         + f"<h2>{la.address_finder()}</h2>" + render_template('button.html') + \
         "<hr>" + render_template('map.html')
 
-@app.route('/handle_post', methods=['POST'])
-def handle_post():
-    if request.method == 'POST':
-        distance = request.form['distance']
-    return distance
+@app.route('/process', methods=['POST'])
+def process():
+    data = request.json['data']
+    return jsonify({'result': data}) 
 
 if __name__ == '__main__':
     app.run(debug=True)
+    print(process())

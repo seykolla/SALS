@@ -62,10 +62,22 @@
     }
 
     function setDistance(distance) {
-    document.getElementById("selectedDistance").innerText = distance;
+    distance = document.getElementById("selectedDistance").innerText;
     document.getElementById("myDropdown").classList.remove("show");
-    writeFile("Users/Arush/VikingsHack/initialize.txt", distance, (err) => {if (err) throw err;});
+    var value = document.getElementById('selectedDistance').innerText; 
+            $.ajax({ 
+                url: '/process', 
+                type: 'POST', 
+                data: { 'data': value }, 
+                success: function(response) { 
+                    document.getElementById('selectedDistence').innerText = response; 
+                }, 
+                error: function(error) { 
+                    console.log(error); 
+                } 
+            }); 
     }
+   
 
     // Close the dropdown if the user clicks outside of it
     window.onclick = function(event) {

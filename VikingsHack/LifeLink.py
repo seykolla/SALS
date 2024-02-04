@@ -40,5 +40,9 @@ class LifeLink:
             return results
 
 
-instance = LifeLink()
+with open('instance.txt', 'r') as f:
+    distance = float(f.readline(1))
+    service = f.readline(2)
 
+
+instace = LifeLink(distance, service)
