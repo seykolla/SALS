@@ -101,21 +101,33 @@
         function setDistance(distance) {
         document.getElementById("selectedDistance").innerText = distance;
         document.getElementById("myDropdown").classList.remove("show");
-        
-        async function sendDistance(){
-            const distance = 
+        const dist = distance;
+        fetch('/process-data', { 
+        method: 'POST', 
+        headers: { 
+            'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify({data: dist}) 
+        }) 
+        .then(response => response.text()) 
+        .then(result => { 
+        console.log(result); 
+        }) 
+        .catch(error => { 
+        console.error('Error:', error); 
+        });
         }
-    
         // Close the dropdown if the user clicks outside of it
         window.onclick = function(event) {
+        
         if (!event.target.matches('.dropbtn')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
             }
         }
         }

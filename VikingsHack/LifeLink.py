@@ -25,7 +25,6 @@ class LifeLink:
     def get_service(self):
         return self.service
     
-    
     def get_nearby_places(self):
         nearby_places = self.client.places_nearby(keyword= self.service, location =self.location, radius = self.distance)
         if(nearby_places['results'] is None):
@@ -39,6 +38,11 @@ class LifeLink:
                 results.append({'name':i['name'], 'address': i['vicinity'], 'distance': {distance}, 'wait_time': wait_time, 'open': i['opening_hours']['open_now']})
             return results
 
-
-instance = LifeLink()
-
+f = open('initialize.txt', 'r')
+instance = LifeLink(f.readline().rstrip()[0:2], 'vet')
+places = instance.get_nearby_places()
+marker = instance.get_current_location()
+with open('location.txt', 'w') as f:
+    f.write(str(list(places)) + "\n")
+    f.write(str(list(marker)))
+    f.close()
