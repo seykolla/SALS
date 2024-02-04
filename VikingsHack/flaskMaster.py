@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, request,jsonify
 from requests import request
+=======
+from flask import Flask, render_template, request, jsonify
+>>>>>>> ed8d18a788eeb88aecadf39d297d95a32616cd92
 import locateaddress as la
 import os
 
@@ -16,10 +20,20 @@ def home():
         + f"<h2>{la.address_finder()}</h2>" + render_template('button.html') + \
         "<hr>" + render_template('map.html')
 
+<<<<<<< HEAD
 @app.route('/process', methods=['POST'])
 def process():
     data = request.json['data']
     return jsonify({'result': data}) 
+=======
+@app.route('/process-data', methods=['POST'])
+def process():
+    data = request.json['data']
+    with open('initialize.txt', 'w') as f:
+        f.write(data)
+    print(data)
+    return jsonify({'result': data})
+>>>>>>> ed8d18a788eeb88aecadf39d297d95a32616cd92
 
 if __name__ == '__main__':
     app.run(debug=True)
